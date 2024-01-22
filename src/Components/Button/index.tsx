@@ -26,7 +26,7 @@ const Button = ({
   disabled = false,
   loading = false,
 }: PropsTypes) => {
-
+ 
   return (
     <button
       className={getClassName(type)}
