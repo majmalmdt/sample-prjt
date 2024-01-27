@@ -1,29 +1,27 @@
-import Form from "../../Components/InfraStructure/Form";
-import { validateRegister } from "../../Validation";
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Table from "../../Components/Table";
+import Tstyle from "../../Components/Table_style";
 import useFetch from "../../Hooks/useFetch";
-
+import logo from "../../Assets/image/—Pngtree—wolf logo_2306634.png";
 
 interface MyObject {
-  icon?:any;
+  icon?:string;
   name: string;
   age: string;
   DOB: string;
   class: string;
-  Phno?:Number;
-
+  Phno?:string;
 }
 
 const Task = () => {
   // Initialize the state with an empty array
-  const [myArray, setMyArray] = useState<MyObject[]>([]);
+  const [Array, setArray] = useState<MyObject[]>([]);
  const {data} = useFetch("/student/all")
   // Function to update the array
   const updateArray = () => {
-    // Use setMyArray to update the state with a new array of objects
-    setMyArray([
-      { name: 'Ramu', age: '15', DOB: '4-11-2008', class: '10' , },
+    // Use setArray to update the state with a new array of objects
+    setArray([
+      { name: 'Ramu', age: '15', DOB: '4-11-2008', class: '10' ,Phno:"5546545",icon:logo},
       { name: 'gopika', age: '23', DOB: '6-2-2008', class: '11' },
       { name: 'sasi', age: '43', DOB: '18-4-2008', class: '04' },
       { name: 'gopu', age: '43', DOB: '18-4-2008', class: '04' },
@@ -33,22 +31,11 @@ const Task = () => {
       { name: 'nambi', age: '15', DOB: '4-11-2008', class: '10' , }
     ]);
   };
-console.log(myArray);
 
   return (
     <div className="px-6" >
-      
-      <div className="absolute -z-50 w-full h-20  -m-9 bg-cyan-500 mx-2">
-      <h1 className="text-white mx-5  text-3xl	">Students Data</h1>
-      </div>
-      <div className="bg-white absolute w-11/12 mx-6 -mt-1  -z-10 h-full z-5 shadow-2xl">
-        
-      <button className="text-blue-600 relative left-5" onClick={updateArray}>Update Array</button>
-      </div>
-      
-      {/* Render the array of objects in your component */}
-      <Table data={myArray}/>
-     
+      <Tstyle updateArray={updateArray}></Tstyle> 
+      <Table data={Array}/>
     </div>
   );
 };

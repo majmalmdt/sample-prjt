@@ -1,7 +1,6 @@
-import { object } from "joi";
 
 interface PropsTypes {
-    data:object;
+    data:any;
 }
 
 const Table = ({data}:PropsTypes )=> {
@@ -11,7 +10,7 @@ const Table = ({data}:PropsTypes )=> {
           <tr >
               
             {Object.keys((data as any)?.[0] as object || {}).map((key) => (
-                <th className="text-slate-800 text-left" key={key}>{key}<div className="bg-gray-800 h-px"></div></th>
+                <th className="text-gray-900 text-left" key={key}>{key}<div className="bg-gray-800 w-full h-px"></div></th>
                 ))}
           </tr>
         </thead> 
@@ -20,8 +19,8 @@ const Table = ({data}:PropsTypes )=> {
           {(data as any)?.map((item:any, index:number) => (
             <tr text-current key={index}>
               {Object.values(item).map((value:any, index:any) => (
-                <td className={`${value ===item[Object.keys(item)[0]]? "bg-white text-left font-bold text-current":"bg-white text-slate-800 text-left"}`}  key={index}>{value}</td>
-              ))}
+               index===5?<img className="w-10" src={value}/> : <td className={`${value ===item[Object.keys(item)[0]]? "bg-white text-left font-bold text-current py-3":"bg-white text-gray-900 text-left"}`}  key={index}>{value}</td>
+))}
             </tr>
           ))}
         </tbody>

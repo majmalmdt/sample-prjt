@@ -1,4 +1,4 @@
-type ButtonType = 'Primary' | 'Secondary' | 'Inline';
+type ButtonType = 'Primary' | 'Secondary' | 'Inline' | 'login';
 
 interface PropsTypes {
   label: String;
@@ -13,14 +13,15 @@ const getClassName = (type:ButtonType)=> {
   const classNamesList = {
     Primary: "primary-button",
     Secondary: "secondary-button",
-    Inline: "inline-button"
+    Inline: "inline-button",
+    login:"bg-violet-950 rounded-md text-white py-2 px-10 w-full"
   }
   return classNamesList[type] || "";
 }
 
 const Button = ({
   label,
-  type = 'Primary',
+  type = 'login',
   onClick,
   action = 'button',
   disabled = false,
@@ -28,11 +29,11 @@ const Button = ({
 }: PropsTypes) => {
  
   return (
-    <button
+    <button 
       className={getClassName(type)}
       onClick={() => !loading && onClick?.()}
       type={action}
-      disabled={loading || disabled}
+      disabled={loading || disabled} 
     >
       {label}
     </button>
