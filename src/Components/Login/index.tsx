@@ -7,10 +7,16 @@ import Form from "../../Components/InfraStructure/Form";
 import { validateRegister } from "../../Validation"
 import Social from "../Social";
 import Button from "../Button";
-import InputField from "../Input";
+import Inputs from "../Inputs";
+import postCall from "../../Services/postCall";
+import { useState } from "react";
+// import InputField from "../Input";
 
 
 const Login = ()=> {
+    const [email,setEmail] = useState("");
+    const [password,setPassword] = useState("")
+
     return (
     <>
     <div className="absolute flex  w-full h-full bg-violet-950">
@@ -36,8 +42,8 @@ and Illustrator here.</div>
 
 </div> */}
 <div className="flex space-x-5">
-<Social link="" image={google} name="Google"/>
-<Social link="" image={facebook} name="Facebook"/>
+<Social link="https://www.google.com/" image={google} name="Google"/>
+<Social link="https://www.facebook.com/" image={facebook} name="Facebook"/>
 </div>
 {/* social login end */}
 <br/>
@@ -47,9 +53,11 @@ and Illustrator here.</div>
 {/* login form star */}
 <div>
   <form>
+  <Inputs type="email" placeholder="Email Address" onChange={(value)=>{setEmail(value)}} value={email}/>
+    <Inputs type="password" placeholder="Password" onChange={(value)=>{setPassword(value)}} value={password}/>
+    {/* <InputField onChange={(value,e)=>{}}/>
     <InputField onChange={(value,e)=>{}}/>
-    <InputField onChange={(value,e)=>{}}/>
-    <InputField onChange={(value,e)=>{}}/>
+    <InputField onChange={(value,e)=>{}}/> */}
 
       {/* <input type="text" placeholder="Full Name" className="w-full border-b-4"></input> <br/><br/>
       <input type="email" placeholder="Email Address" className="w-full border-b-4"></input> <br/><br/>
@@ -77,10 +85,16 @@ and Illustrator here.</div>
         validateFunction={validateRegister}
         onSubmit={(d)=>console.log(d)}
       /> */}
-      <Button label={'login'}/>
+      <Button label={'login'} onClick={()=>{
+        console.log(email)
+        postCall("/auth/login",{
+            email:email,
+            password:password
+        })
+      }}/>
     
   </form><br/>
-  <a href="/registration#" className="text-neutral-400 text-base leading-9 tracking-widest max-w-[276px]">Don't have an account? Register</a>
+  <span className="text-neutral-400 text-base leading-9 tracking-widest max-w-[276px]">Don't have an account? <a href="/registration#">Register</a></span>
   
 
 

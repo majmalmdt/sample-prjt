@@ -14,7 +14,7 @@ const getClassName = (type:ButtonType)=> {
     Primary: "primary-button",
     Secondary: "secondary-button",
     Inline: "inline-button",
-    login:"bg-violet-950 rounded-md text-white py-2 px-10 w-full"
+    login:"bg-violet-950 rounded-md text-white py-2 px-10 w-full animate-pulse"
   }
   return classNamesList[type] || "";
 }
