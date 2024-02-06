@@ -1,10 +1,6 @@
-import bell from "../note/images/bell-ringing-03.svg";
-import user from "../note/images/user.png";
 import box from "../note/images/Group 243.svg";
 import round from "../note/images/round.svg";
-import file from "../note/images/file.svg";
 import plus from "../note/images/plusicon.svg";
-import foot from "../note/images/Frame 34.svg";
 import React, { useState } from "react";
 
 interface noteDataType {
@@ -30,22 +26,16 @@ const Note = () => {
   console.log(data);
   return (
     <>
-      {/* full starting */}
       <div className="grid w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
         <div className="grid place-self-center w-36 h-8 rounded-full bg-black mt-3">
           <div className="bg-white rounded-full w-2 h-2 place-self-end my-3 mx-2"></div>
         </div>
-        {/* user datas */}
-
-        {/* blue box */}
         <div className="w-full overflow-visible  -mt-24 ">
           <div className="relative -bottom-44 overflow-visible left-14 bg-gradient-to-l from-indigo-300 via-purple-300 to-pink-300  rounded-3xl w-10/12 h-36"></div>
           <div className="absolute -top-26 bg-gradient-to-l from-indigo-500 via-purple-500 to-pink-500 rounded-3xl w-11/12  h-40"></div>
           <img className="" src={box} />
           <img className="relative -top-36 left-10" src={round} />
         </div>
-
-        {/* files imagess */}
         <div className="grid grid-rows-4 grid-flow-col gap-4  ">
           {data
             .slice()
@@ -65,7 +55,6 @@ const Note = () => {
               </div>
             ))}
         </div>
-        {/* footer */}
         <div className=" flex  mt-4 ml-6">
           {isTextareaVisible && (
             <div className="flex">
@@ -106,7 +95,6 @@ const Note = () => {
                     },
                   ]);
                 }
-
                 setNoteData(""), setNoteItem("");
               } else {
                 if (!noteData && noteItem) alert("enter heading");
@@ -124,7 +112,6 @@ const Note = () => {
           <button
             className="relative left-20 top-6 w-36 bg-red-500 h-10 rounded-2xl hover:bg-red-800 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
             onClick={() => {
-              // alert("delete successful");
               setData(data.filter((value) => value.heading !== noteData));
               setNoteData(""), setNoteItem("");
             }}
@@ -133,7 +120,6 @@ const Note = () => {
           </button>
         </div>
       </div>
-      {/* full end */}
     </>
   );
 };
